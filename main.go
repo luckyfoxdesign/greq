@@ -41,6 +41,8 @@ func GetHTMLSource(websiteURL, proxyAddress string) ([]byte, error) {
 		return []byte{}, errors.New(errorString)
 	}
 
+	requestToSite.Header.Set("User-Agent", "Mozilla/5.0 (X11; Linux i686; rv:7.0) Gecko/20180305 Firefox/35.0")
+
 	requestResponse, err := client.Do(requestToSite)
 	if err != nil {
 		errorString = fmt.Errorf("Error when client.do(requestToSite): %w", err).Error()
