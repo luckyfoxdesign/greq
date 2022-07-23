@@ -33,7 +33,7 @@ func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string)
 
 	client := &http.Client{
 		Transport: transport,
-		Timeout:   time.Millisecond * 500,
+		Timeout:   time.Minute * 5,
 	}
 
 	requestToSite, err := http.NewRequest("GET", siteURL.String(), nil)
