@@ -16,13 +16,13 @@ func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string)
 	proxyURL, err := url.Parse(proxyAddress)
 
 	if err != nil {
-		errorString = fmt.Errorf("Error when url.parse(proxyAddress): %w", err).Error()
+		errorString = fmt.Errorf("error when url.parse(proxyAddress): %w", err).Error()
 		return []byte{}, errors.New(errorString)
 	}
 
 	siteURL, err := url.Parse(websiteURL)
 	if err != nil {
-		errorString = fmt.Errorf("Error when url.parse(websiteURL): %w", err).Error()
+		errorString = fmt.Errorf("error when url.parse(websiteURL): %w", err).Error()
 		return []byte{}, errors.New(errorString)
 	}
 
@@ -38,7 +38,7 @@ func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string)
 
 	requestToSite, err := http.NewRequest("GET", siteURL.String(), nil)
 	if err != nil {
-		errorString = fmt.Errorf("Error when http.NewRequest(siteURL): %w", err).Error()
+		errorString = fmt.Errorf("error when http.NewRequest(siteURL): %w", err).Error()
 		return []byte{}, errors.New(errorString)
 	}
 
