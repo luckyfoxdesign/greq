@@ -27,12 +27,13 @@ func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string)
 	}
 
 	transport := &http.Transport{
-		Proxy: http.ProxyURL(proxyURL),
+		Proxy:                 http.ProxyURL(proxyURL),
+		ResponseHeaderTimeout: time.Minute,
 	}
 
 	client := &http.Client{
 		Transport: transport,
-		Timeout:   time.Minute * 2,
+		Timeout:   time.Millisecond * 500,
 	}
 
 	requestToSite, err := http.NewRequest("GET", siteURL.String(), nil)
