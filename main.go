@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string, timeOut time.Duration) ([]byte, error) {
+func GetHTMLSource(websiteURL, proxyAddress string, timeOut time.Duration) ([]byte, error) {
 
 	var errorString string
 
@@ -41,8 +41,6 @@ func GetHTMLSource(websiteURL, proxyAddress string, headers map[string][]string,
 		errorString = fmt.Errorf("error when http.NewRequest(siteURL): %w", err).Error()
 		return []byte{}, errors.New(errorString)
 	}
-
-	requestToSite.Header = headers
 
 	requestResponse, err := client.Do(requestToSite)
 	if err != nil {
